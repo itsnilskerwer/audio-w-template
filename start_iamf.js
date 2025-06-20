@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', () => {
+  startIAMFAudio();
+});
 async function startIAMFAudio() {
   if (typeof IAMFPlayer !== 'function') {
     console.error('IAMFPlayer not loaded correctly.');
