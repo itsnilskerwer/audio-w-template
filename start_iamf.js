@@ -1,6 +1,8 @@
 async function startIAMFAudio() {
-  // Load the wrapper which loads the WASM
-  const { IAMFPlayer } = await import('./iamf/decoder/wasm/wrapper.js');
+  if (typeof IAMFPlayer !== 'function') {
+    console.error('IAMFPlayer not loaded correctly.');
+    return;
+  }
 
   const player = new IAMFPlayer({
     wasmPath: './iamf/decoder/wasm/wrapper.wasm',
@@ -8,10 +10,9 @@ async function startIAMFAudio() {
     appBundlePath: './iamf/app_bundle.js',
   });
 
-  // Load your audio
-  const audioResponse = await fetch('./iamf/data/videos/Animated_demo_3OA.iamf');
-  const audioBuffer = await audioResponse.arrayBuffer();
+  const response = await fetch('./iamf/data/videos/Animated_demo_3OA.iamf');
+  const buffer = await response.arrayBuffer();
 
-  await player.load(audioBuffer);
+  await player.load(buffer);
   player.play();
 }
