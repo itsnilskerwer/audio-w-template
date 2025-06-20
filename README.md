@@ -1,5 +1,12 @@
 # audio-w-template
 
+## Features
+
+static website
+pure HTML, CSS, JS
+
+Theme toggle: CSS color function light-dark() makes media query obsolete.
+
 ## Licence
 BSD 3-Clause Clear License The Clear BSD License
 
